@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
 
-  <remote fetch="https://github.com/b2gos/" name="b2gos"/>
   <remote fetch="https://github.com/kaiostech/" name="kaios"/>
+  <remote fetch="https://github.com/seinlin/" name="seinlin"/>
 
-  <default revision="refs/tags/android-10.0.0_r11" remote="aosp" sync-j="4"/>
+  <default revision="refs/tags/android-12.1.0_r8" remote="aosp" sync-j="4"/>
 
   <!-- capyloon repos -->
   <project groups="capyloon" name="api-daemon" path="gonk-misc/api-daemon" remote="capyloon" revision="main"/>
@@ -13,19 +13,19 @@
            remote="capyloon" revision="3a83a4f4ed2302ff6e68ab569c88793b50c22d28"/>
   <project groups="capyloon" name="gecko-b2g" path="gecko" remote="capyloon" revision="capyloon"/>
   <project groups="capyloon" name="gonk-misc" path="gonk-misc" remote="capyloon" revision="main"/>
-  <project groups="capyloon" path="system/sepolicy" name="platform_system_sepolicy" remote="capyloon" revision="capyloon"/>
+  <project groups="capyloon" path="system/sepolicy" name="platform_system_sepolicy" remote="seinlin" revision="gonk_android-12.1.0_r8"/>
 
   <!-- KaiOS -->
-  <project groups="kai" name="hidl-gen" path="system/tools/hidl" remote="kaios" revision="master"/>
-  <project groups="kai" name="gonk-binder" path="gonk-misc/gonk-binder" remote="kaios" revision="master"/>
-  
+  <project groups="kai" name="hidl-gen" path="system/tools/hidl" remote="seinlin" revision="gonk_android-12.1.0_r8"/>
+  <project groups="kai" name="gonk-binder" path="gonk-misc/gonk-binder" remote="seinlin" revision="android-12"/>
+
   <!-- Fake impl. for AOSP -->
   <project groups="kai" name="fake_test" path="test" remote="kaios" revision="master">
     <copyfile dest="frameworks/base/packages/Android.mk" src="vts/tools/build/Android.host_config.mk"/>
   </project>
 
-  <!-- add phh's patches based on "gonk_android-10.0.0_r11" branch of kaiostech's repos -->
-  <project name="platform_build" path="build/make" remote="b2gos" revision="gonk_android-10.0.0_r11" >
+  <!-- AOSP change in KaiOS -->
+  <project groups="kai" name="platform_build" path="build/make" remote="seinlin" revision="gonk_android-12.1.0_r8">
     <copyfile src="core/root.mk" dest="Makefile"/>
     <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk"/>
     <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default"/>
@@ -34,18 +34,17 @@
     <linkfile src="target" dest="build/target"/>
     <linkfile src="tools" dest="build/tools"/>
   </project>
-  <project name="platform_system_core" path="system/core" remote="b2gos" revision="gonk_android-10.0.0_r11" />
-  <project name="platform_system_vold" path="system/vold" remote="b2gos" revision="gonk_android-10.0.0_r11" />
-
-  <project groups="kai" name="platform_build_soong" path="build/soong" remote="kaios" revision="gonk_android-10.0.0_r11">
+  <project groups="kai" name="platform_build_soong" path="build/soong" remote="seinlin" revision="gonk_android-12.1.0_r8">
     <linkfile src="root.bp" dest="Android.bp"/>
     <linkfile src="bootstrap.bash" dest="bootstrap.bash"/>
   </project>
-  <project groups="kai" name="platform_system_connectivity_wificond" path="system/connectivity/wificond" remote="kaios" revision="gonk_android-10.0.0_r11"/>
-  <project groups="kai" name="platform_art" path="art" remote="kaios" revision="gonk_android-10.0.0_r11"/>
+  <project groups="kai" name="platform_system_connectivity_wificond" path="system/connectivity/wificond" remote="seinlin" revision="gonk_android-12.1.0_r8"/>
+  <project groups="kai" name="platform_system_core" path="system/core" remote="seinlin" revision="gonk_android-12.1.0_r8"/>
+  <project groups="kai" name="platform_system_vold" path="system/vold" remote="seinlin" revision="gonk_android-12.1.0_r8"/>
+  <project groups="kai" name="platform_art" path="art" remote="seinlin" revision="gonk_android-12.1.0_r8"/>
   <project groups="kai" name="platform_external_svox" path="external/svox" remote="kaios" revision="master"/>
   <project groups="kai" name="librecovery" path="librecovery" remote="kaios" revision="master"/>
 
-  <include name="aosp.xml"/>
+  <include name="aosp-12.xml"/>
 
 </manifest>

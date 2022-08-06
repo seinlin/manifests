@@ -2,12 +2,11 @@
 <manifest>
 
   <include name="b2g.xml"/>
-  <include name="base-q.xml"/>
+  <include name="base-12.xml"/>
 
-  <project groups="kai" name="device_generic_goldfish" path="device/generic/goldfish" remote="kaios" revision="gonk_android-10.0.0_r11" />
+  <project path="device/generic/goldfish" name="device_generic_goldfish" remote="seinlin" revision="gonk_android-12.1.0_r8" />
   <project path="device/generic/common" name="device/generic/common" groups="pdk" />
   <project path="device/generic/goldfish-opengl" name="device/generic/goldfish-opengl" groups="pdk" />
   <project path="external/iw" name="platform/external/iw" groups="pdk" />
   <project path="prebuilts/android-emulator" name="platform/prebuilts/android-emulator" groups="pdk-fs" clone-depth="1" />
-  <project path="prebuilts/vndk/v28" name="platform/prebuilts/vndk/v28" groups="pdk" clone-depth="1" />
 </manifest>
