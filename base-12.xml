@@ -45,6 +45,9 @@
   <project groups="kai" name="platform_external_svox" path="external/svox" remote="kaios" revision="master"/>
   <project groups="kai" name="librecovery" path="librecovery" remote="kaios" revision="master"/>
 
+  <project path="frameworks/av" name="platform/frameworks/av" remote="seinlin" revision="gonk_android-12.1.0_r8"/>
+  <project path="frameworks/base" name="platform/frameworks/base" remote="seinlin" revision="gonk_android-12.1.0_r8"/>
+
   <include name="aosp-12.xml"/>
 
 </manifest>
